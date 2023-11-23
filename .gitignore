@@ -12,6 +12,7 @@ data
 dist
 dist-ssr
 *.local
+.env
 frontend/public/images
 
 # Editor directories and files
