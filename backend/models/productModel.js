@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-reviewSchema = new Schema(
+const reviewSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
@@ -23,7 +23,7 @@ reviewSchema = new Schema(
   { timestamps: true }
 );
 
-productSchema = new Schema(
+const productSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
@@ -75,6 +75,6 @@ productSchema = new Schema(
   { timestamps: true }
 );
 
-const Product = productSchema.model("Product", productSchema);
+const Product = model("Product", productSchema);
 
 export default Product;
