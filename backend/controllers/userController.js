@@ -65,7 +65,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
     expires: new Date(0),
   });
 
-  res.status(200).send("Successfully logged out");
+  res.status(200).json({ Message: "Successfuly Logged out" });
 });
 
 //@route   GET /api/users/profile
