@@ -1,18 +1,30 @@
 import { useGetProductsQuery } from "../slices/productsApiSlice";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Paginate from "../components/Paginate";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta";
 import Message from "../components/Message";
+import ProductCarousel from "../components/ProductCarousel";
 
 const HomeScreen = () => {
-  const { pageNumber } = useParams();
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { pageNumber, keyword } = useParams();
+  const { data, isLoading, error } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+  });
   console.log(data);
 
   return (
     <>
+      {!keyword ? (
+        <ProductCarousel />
+      ) : (
+        <Link to="/" className="btn btn-light mb-4">
+          Go Back
+        </Link>
+      )}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -21,6 +33,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title="Welcome to ShopApp" />
           <h1>Latest Products</h1>
           <Row>
             {data.products.map((product) => {
@@ -31,7 +44,11 @@ const HomeScreen = () => {
               );
             })}
           </Row>
-          <Paginate pages={data.pages} page={data.page} />
+          <Paginate
+            pages={data.pages}
+            page={data.page}
+            keyword={keyword ? keyword : ""}
+          />
         </>
       )}
     </>

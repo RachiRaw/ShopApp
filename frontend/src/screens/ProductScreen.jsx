@@ -17,6 +17,7 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader.jsx";
+import Meta from "../components/Meta.jsx";
 import Message from "../components/Message.jsx";
 import { addToCart } from "../slices/cartSlice.js";
 
@@ -78,6 +79,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={5}>
               <Image src={product.image} alt={product.name} fluid />
