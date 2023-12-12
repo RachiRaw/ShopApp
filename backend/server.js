@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
@@ -17,9 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("Api is running");
-});
+// app.get("/", (req, res) => {
+//   res.send("Api is running");
+// });
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
