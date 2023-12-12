@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/FormContainer";
 import Loader from "../components/Loader";
+import Meta from "../components/Meta.jsx";
 import { useRegisterMutation } from "../slices/usersApiSlice.js";
 import { setCredentials } from "../slices/authSlice.js";
 import { toast } from "react-toastify";
@@ -43,70 +44,73 @@ const RegisterScreen = () => {
   };
 
   return (
-    <FormContainer>
-      <h1>Sign Up</h1>
+    <>
+      <Meta title="Register" />
+      <FormContainer>
+        <h1>Sign Up</h1>
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group controlId="name" className="my-3">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="name"
-            placeholder="enter name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="email" className="my-3">
-          <Form.Label>Email Address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+        <Form onSubmit={submitHandler}>
+          <Form.Group controlId="name" className="my-3">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="name"
+              placeholder="enter name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+          <Form.Group controlId="email" className="my-3">
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
-        <Form.Group controlId="password" className="my-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+          <Form.Group controlId="password" className="my-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
-        <Form.Group controlId="confirmPassword" className="my-3">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Reenter password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
+          <Form.Group controlId="confirmPassword" className="my-3">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Reenter password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
 
-        <Button
-          type="submit"
-          variant="primary"
-          className="mt-2"
-          disabled={isLoading}
-        >
-          Sign Up
-        </Button>
+          <Button
+            type="submit"
+            variant="primary"
+            className="mt-2"
+            disabled={isLoading}
+          >
+            Sign Up
+          </Button>
 
-        {isLoading && <Loader />}
-      </Form>
+          {isLoading && <Loader />}
+        </Form>
 
-      <Row className="my-3">
-        <Col>
-          Already Have an account?{" "}
-          <Link to={redirect ? "/login?redirect=${redirect}" : "/login"}>
-            Login
-          </Link>
-        </Col>
-      </Row>
-    </FormContainer>
+        <Row className="my-3">
+          <Col>
+            Already Have an account?{" "}
+            <Link to={redirect ? "/login?redirect=${redirect}" : "/login"}>
+              Login
+            </Link>
+          </Col>
+        </Row>
+      </FormContainer>
+    </>
   );
 };
 export default RegisterScreen;

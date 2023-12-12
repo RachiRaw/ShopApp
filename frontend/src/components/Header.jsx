@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchBox from "./SearchBox.jsx";
 import { useLogoutMutation } from "../slices/usersApiSlice.js";
 import { clearCredentials } from "../slices/authSlice.js";
+import { resetCart } from "../slices/cartSlice.js";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -20,6 +21,7 @@ const Header = () => {
     try {
       dispatch(clearCredentials());
       await logout().unwrap();
+      dispatch(resetCart());
       navigate("/login");
     } catch (err) {
       console.log(err);

@@ -3,8 +3,9 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col, ListGroup, Image, Button, Card } from "react-bootstrap";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import Message from "../components/Message.jsx";
+import Loader from "../components/Loader.jsx";
+import Meta from "../components/Meta.jsx";
 import {
   useGetOrderDetailsQuery,
   usePayOrderMutation,
@@ -106,9 +107,11 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger" />
+    <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
+      <Meta title="Final Checkout page" />
+
       <h1>Order {order._id}</h1>
 
       <Row>
@@ -203,12 +206,6 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      <Button
-                        onClick={onApproveTest}
-                        style={{ marginBottom: "10px" }}
-                      >
-                        Test Pay Order
-                      </Button>
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}

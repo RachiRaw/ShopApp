@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import Meta from "../../components/Meta";
 import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
 import {
@@ -50,6 +51,7 @@ const UserEditScreen = () => {
 
   return (
     <>
+      <Meta title={name} />
       <Link to="/admin/userlist" className="btn btn-light my-3">
         Go Back
       </Link>
@@ -60,7 +62,7 @@ const UserEditScreen = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant="danger">{error}</Message>
+          <Message variant="danger">{error.data.message}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-2">

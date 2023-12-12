@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import Meta from "../../components/Meta";
 import { toast } from "react-toastify";
 import Paginate from "../../components/Paginate";
 import {
@@ -49,6 +50,7 @@ const ProductListScreen = () => {
   };
   return (
     <>
+      <Meta title="Product List" />
       <Row className="align-items-center">
         <Col>
           <h1>Products</h1>
@@ -66,7 +68,7 @@ const ProductListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="danger">{error.data.message}</Message>
       ) : (
         <>
           <Table striped hover responsive className="tabe-sm">

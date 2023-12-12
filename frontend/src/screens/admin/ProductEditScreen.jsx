@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import Meta from "../../components/Meta";
 import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
 import {
@@ -69,6 +70,7 @@ const ProductEditScreen = () => {
 
   return (
     <>
+      <Meta title={name} />
       <Link to="/admin/productlist" className="btn btn-light my-3">
         Go Back
       </Link>
