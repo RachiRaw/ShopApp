@@ -18,7 +18,7 @@ import ProductScreen from "./screens/ProductScreen.jsx";
 import CartScreen from "./screens/CartScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
-import ShippingScreen from "./screens/shippingScreen.jsx";
+import ShippingScreen from "./screens/ShippingScreen.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
 import PaymentScreen from "./screens/PaymentScreen.jsx";
